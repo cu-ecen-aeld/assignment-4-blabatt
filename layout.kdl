@@ -1,0 +1,93 @@
+layout cwd="." {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    tab name="edit"  {
+		pane split_direction="vertical" {
+			pane name="assignment" size="50%" cwd="base_external" focus=true {
+				command "nvim"
+				args "Config.in" "external.mk" "external.desc" "package/aesd-assignments/aesd-assignments.mk" "package/aesd-assignments/Config.in"
+			}
+			pane stacked=true size="50%" {
+				pane name="shell" expanded=true cwd="."
+				pane name="scripts" cwd="." {
+					command "nvim"
+					args "build.sh" "clean.sh" "runqemu.sh" "save-config.sh" "shared.sh"
+				}
+				pane name="test" cwd="." {
+					command "nvim"
+					args "full-test.sh" "assignment-autotest/test/assignment4/Test_threading.c" "assignment-autotest/test/assignment4/assignment-test.sh"
+				}
+				pane name="src" cwd="." {
+					command "nvim"
+					args "conf/username.txt" "conf/assignment.txt"
+				}
+				pane name="layout" cwd="." {
+					command "nvim"
+					args "layout.kdl"
+				}
+			}
+		}
+	}
+    tab name="old" cwd="../" {
+		pane stacked=true size="50%" {
+			pane name="assignment-1" cwd="./assignment-1-blabatt"
+			pane name="assignment-2" cwd="./assignment-2-blabatt"
+			pane name="assignment-3" cwd="./assignment-3-blabatt"
+			pane name="assignment-4-part-1" cwd="./assignment-4-part-1"
+		}
+	}
+    tab name="man" {
+		pane name="man" cwd="." {
+			command "man"
+			args "qemu"
+		}
+	}
+    tab name="linux-src" cwd="~/Projects/open-source/linux-kernel" {
+		pane split_direction="vertical" {
+			pane name="git" size="50%" cwd="." {
+				command "git"
+				args "tag" "-l"
+			}
+			pane name="shell" focus=true cwd="."
+		}
+    }
+    tab name="busybox" cwd="~/Projects/open-source/busybox" {
+		pane name="shell"
+	}
+    tab name="toolchain" cwd="/opt/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/" {
+		pane split_direction="vertical" {
+			pane name="toolchain" {
+				command "aarch64-none-linux-gnu-gcc"
+				args "-print-sysroot" "-v"
+			}
+			pane name="shell"
+		}
+	}
+    tab name="btop" cwd="." {
+		pane name="btop" {
+			command "btop"
+		}
+	}
+    tab name="course" cwd="../course-notes" {
+		pane split_direction="vertical" {
+			pane name="contents" {
+				command "ls"
+			}
+			pane name="shell"
+		}
+	}
+    tab name="runner" cwd="~/Projects/open-source/actions-runner" {
+		pane name="shell"
+	}
+    tab name="buildroot" cwd="./buildroot" {
+		pane name="shell"
+	}
+}
+
