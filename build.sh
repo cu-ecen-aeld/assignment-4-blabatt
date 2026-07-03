@@ -4,6 +4,9 @@
 
 source shared.sh
 
+export FORCE_UNSAFE_CONFIGURE=1 # changed: got this from https://github.com/cu-ecen-aeld/assignment-4-SanthoshKmrR/commit/c9e36b9f135c2dc7ac873d4d0578bbe59e3a6202
+
+
 EXTERNAL_REL_BUILDROOT=../base_external
 git submodule init
 git submodule sync
